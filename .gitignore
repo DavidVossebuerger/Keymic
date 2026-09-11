@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.coverage
+build/
+dist/
+*.wav
+*.mp3
+*.log
+.env
+.venv/
+venv/
+home/
+.runtime/

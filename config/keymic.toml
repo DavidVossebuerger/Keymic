@@ -1,0 +1,48 @@
+# keymic — Push-to-talk voice dictation
+# Diese Datei wird beim ersten `keymic setup` nach
+# ~/.config/keymic/config.toml kopiert.
+
+[general]
+language = "de"
+hotkey_mode = "push-to-talk"
+hotkey = "KEY_RIGHTCTRL"
+audio_device = "auto"
+sample_rate = 16000
+max_recording_seconds = 600
+
+[groq]
+# Whisper-Modell (Groq-API). Siehe https://console.groq.com/docs/models
+model = "whisper-large-v3"
+endpoint = "https://api.groq.com/openai/v1/audio/transcriptions"
+api_key = ""
+prompt = ""
+vocab = []
+
+[injection]
+# auto | ydotool | xdotool | clipboard
+method = "auto"
+ydotool_delay_ms = 0
+clipboard_paste_delay_ms = 120
+
+[postprocess]
+remove_fillers = true
+filler_words = ["aehm", "aeh", "also", "halt", "quasi", "sozusagen", "eigentlich", "irgendwie"]
+auto_capitalize = true
+auto_punctuate = false
+
+# AI-Postprocess per Groq LLM. Default AUS — kann lange Texte umschreiben.
+# Wer es testweise anmachen will: 'ai_postprocess = true'.
+ai_postprocess = false
+ai_model = "llama-3.3-70b-versatile"
+ai_endpoint = "https://api.groq.com/openai/v1/chat/completions"
+ai_timeout_s = 15
+ai_custom_dict = []
+ai_skip_if_clean = true
+
+[ui]
+notify = true
+state_file = "/tmp/keymic.state"
+
+[learn]
+json_path = "~/.local/share/keymic/learned.json"
+window_s = 3.0

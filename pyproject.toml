@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "keymic"
+version = "0.1.0"
+description = "Push-to-talk voice dictation for Linux"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+authors = [{name = "David Vossebürger"}]
+dependencies = [
+    "requests>=2.31",
+    "evdev>=1.4; sys_platform == 'linux'",
+    "tomli_w>=0.4",
+]
+
+[project.scripts]
+keymic = "keymic.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["keymic*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v"
